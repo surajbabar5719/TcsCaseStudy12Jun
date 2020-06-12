@@ -1,0 +1,23 @@
+@charset "ISO-8859-1";
+indexheaders{
+	font-size: 32px;
+	margin: 5%;
+	color: rgb(232,232,232);	
+}
+body {
+style="background-color:rgb(211,211,211);
+  background-color: powderblue;
+}
+h5 {
+  color: blue;
+}
+form {
+  color: red;
+}
+.text_area{
+	border-radius: 4px;
+	background-color:MintCream;
+	padding: 11%;
+	margin: 3% 5%;
+	
+}

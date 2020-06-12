@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";@charset "ISO-8859-1";
+h3{
+	font-size: 32px;
+	margin: 5%;
+	color: rgb(232,232,232);	
+	display: inline;
+}
+h4{
+	color:red;
+}
+.textarea{
+	border-radius: 4px;
+	background-color:Cyan;
+	padding: 5px;
+	margin: 3% 5%;
+	
+}
+.backarea{
+	
+	background-color:Black;
+	margin-up: 0%;
+}
+.Container input{ 
+margin-right:1%;
+}
