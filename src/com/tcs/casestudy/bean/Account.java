@@ -4,6 +4,7 @@ public class Account{
 	private int customerId;
 	private String accountType;
 	private int amount;
+	int x;
 	/**
 	 * @param customerId
 	 * @param accountType
