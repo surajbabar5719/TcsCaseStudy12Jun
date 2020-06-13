@@ -1,14 +1,41 @@
 package com.tcs.casestudy.bean;
 public class Customer {
 	int customerSSNId;
+	int customerId;
+	/**
+	 * @return the customerSSNId
+	 */
+	public int getCustomerSSNId() {
+		return customerSSNId;
+	}
+	/**
+	 * @param customerSSNId the customerSSNId to set
+	 */
+	public void setCustomerSSNId(int customerSSNId) {
+		this.customerSSNId = customerSSNId;
+	}
+	/**
+	 * @return the customerId
+	 */
+	public int getCustomerId() {
+		return customerId;
+	}
+	/**
+	 * @param customerId the customerId to set
+	 */
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
 	String customerName;
 	int age;
 	String addressLine1;
 	String addressLine2;
 	String city;
 	String state;
+	
 	/**
 	 * @param customerSSNId
+	 * @param customerId
 	 * @param customerName
 	 * @param age
 	 * @param addressLine1
@@ -16,9 +43,10 @@ public class Customer {
 	 * @param city
 	 * @param state
 	 */
-	public Customer(int customerSSNId, String customerName, int age, String addressLine1, String addressLine2,
-			String city, String state) {
+	public Customer(int customerSSNId, int customerId, String customerName, int age, String addressLine1,
+			String addressLine2, String city, String state) {
 		this.customerSSNId = customerSSNId;
+		this.customerId = customerId;
 		this.customerName = customerName;
 		this.age = age;
 		this.addressLine1 = addressLine1;
@@ -26,6 +54,7 @@ public class Customer {
 		this.city = city;
 		this.state = state;
 	}
+	
 	public String getCustomerName() {
 		return customerName;
 	}

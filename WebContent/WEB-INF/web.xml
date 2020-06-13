@@ -5,11 +5,19 @@
     <welcome-file>Login.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-  		<servlet-name>LoginServlet</servlet-name>
-  		<servlet-class>com.tcs.casestudy.servlet.LoginServlet</servlet-class>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.tcs.casestudy.servlet.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  		<servlet-name>LoginServlet</servlet-name>
-  		<url-pattern>/Login</url-pattern>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>HeaderServlet</servlet-name>
+    <servlet-class>com.tcs.casestudy.servlet.HeaderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HeaderServlet</servlet-name>
+    <url-pattern>/Header</url-pattern>
   </servlet-mapping>
 </web-app>

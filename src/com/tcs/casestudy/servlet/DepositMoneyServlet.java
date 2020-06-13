@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class DepositMoneyServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/DepositMoneyServlet")
+public class DepositMoneyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public DepositMoneyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,8 +37,8 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher rd=getServletContext().getRequestDispatcher("/Home.jsp");
-		rd.include(request, response);
+		RequestDispatcher rd=null;
+		rd
 	}
 
 }

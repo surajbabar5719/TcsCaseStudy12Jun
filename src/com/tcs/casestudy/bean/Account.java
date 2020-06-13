@@ -9,8 +9,7 @@ public class Account{
 	 * @param accountType
 	 * @param amount
 	 */
-  
-	public Account(int customerId, String accountType, int amount) {
+public Account(int customerId, String accountType, int amount) {
 		this.customerId = customerId;
 		this.accountType = accountType;
 		this.amount = amount;
