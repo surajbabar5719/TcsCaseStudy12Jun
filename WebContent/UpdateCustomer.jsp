@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Update Customer</title>
+<title>Delete Account</title>
 </head>
 <body>
+<<<<<<< HEAD
 <%@ include file="Header.jsp" %>
 <link rel="stylesheet" href="style.css">
 <div class="text_area">
@@ -26,5 +27,8 @@
 	</form>
 	</center></div>
 <%@ include file="Footer.jsp" %>
+=======
+
+>>>>>>> branch 'master' of https://github.com/surajbabar5719/TcsCaseStudy12Jun.git
 </body>
 </html>

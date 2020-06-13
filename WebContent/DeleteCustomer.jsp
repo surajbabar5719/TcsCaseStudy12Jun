@@ -4,9 +4,25 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Delete Customer</title>
 </head>
 <body>
-
+         <centre>
+        <h1> Delete Customer</h1>
+                 
+        
+        <form action="deleteCustomer" method=post>
+	    <table>
+	     <tr><td><strong>Customer SSN ID</strong></td><td><input type=text name="cssId"></td></tr>
+	     <tr><td><strong>customer ID</strong></td><td><input type=text name="customerId"></td></tr>
+	      <tr><td><strong>Customer Name</strong><td><input type=text name="customerName"></td></tr>
+	      <tr><td><strong>Age</strong></td><td><input type=text name="age"></td></tr>
+	      <tr><td><strong>Address</strong></td><td><input type=text name="address"></td></tr>
+         	</table><br>
+            <input type=submit value="delete" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;">
+            <input type=submit value="cancle" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;">
+		
+	        </form>
+	    </centre>
 </body>
 </html>

@@ -9,6 +9,10 @@ public class Account{
 	 * @param accountType
 	 * @param amount
 	 */
+<<<<<<< HEAD
+=======
+  
+>>>>>>> branch 'master' of https://github.com/surajbabar5719/TcsCaseStudy12Jun.git
 	public Account(int customerId, String accountType, int amount) {
 		this.customerId = customerId;
 		this.accountType = accountType;
