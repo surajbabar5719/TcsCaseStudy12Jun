@@ -7,6 +7,9 @@
 <title>Update Customer</title>
 </head>
 <body>
+<%@ include file="Header.jsp" %>
+<link rel="stylesheet" href="style.css">
+<div class="text_area">
 <center>
 	<form action="UpdateCustomer" method=post>
 	<table>
@@ -21,6 +24,7 @@
 	</table><br>
 	<input type=submit value="Update" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;">
 	</form>
-	</center>
+	</center></div>
+<%@ include file="Footer.jsp" %>
 </body>
 </html>

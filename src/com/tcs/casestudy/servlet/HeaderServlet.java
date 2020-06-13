@@ -37,9 +37,15 @@ public class HeaderServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println(request.getParameter("submit"));
-		RequestDispatcher rd=getServletContext().getRequestDispatcher("/Header.jsp");
-		rd.include(request, response);
+		RequestDispatcher rd=null;
+		String command=request.getParameter("submit");
+		if(command.equals("CustomerManagement"))
+		{
+			rd=getServletContext().getRequestDispatcher("/UpdateCustomer.jsp");
+		}
+		else {
+		rd=getServletContext().getRequestDispatcher("/Login.jsp");
+		}rd.include(request, response);
 	}
 
 }
