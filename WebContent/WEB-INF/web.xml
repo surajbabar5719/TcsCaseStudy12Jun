@@ -20,12 +20,4 @@
     <servlet-name>HeaderServlet</servlet-name>
     <url-pattern>/Header</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>DepositMoneyServlet</servlet-name>
-    <servlet-class>com.tcs.casestudy.servlet.DepositMoneyServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DepositMoneyServlet</servlet-name>
-    <url-pattern>/DepositMoney</url-pattern>
-  </servlet-mapping>
 </web-app>
