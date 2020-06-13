@@ -10,14 +10,14 @@
 	<div class="backarea">
 	<h3>Bank Name</h3>
 	<div class="textarea">
-	<form action="index" method=post >
+	<form action="Header" method=post >
 		<div class="Container">
-		<input type="submit" value="Home ">
-		<input type="submit" value="CustomerManagement">
-		<input type="submit" value="AccountManagement">
-		<input type="submit" value="StatusDetails">
-		<input type="submit" value="AccountOperations">
-		<input type="submit" value="Logout">
+		<input type="submit" name="submit" value="Home" id="Home">
+		<input type="submit" name="submit" value="CustomerManagement" id="CustomerManagement">
+		<input type="submit" name="submit" value="AccountManagement" id="AccountManagement">
+		<input type="submit" name="submit" value="StatusDetails" id="StatusDetails">
+		<input type="submit"  name="submit" value="AccountOperations" id="AccountOperations">
+		<input type="submit"  name="submit" value="Logout" id="Logout">
 	</div></form>
 </div>
 </div>
