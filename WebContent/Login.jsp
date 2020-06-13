@@ -5,10 +5,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
-<%@ include file="Header.jsp" %>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body style="background-color:teal;"><br><br><br>
 <div class="text_area">
 <center>
 		<strong>LOGIN</strong><br><br>
