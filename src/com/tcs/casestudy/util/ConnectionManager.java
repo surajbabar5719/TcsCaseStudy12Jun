@@ -8,6 +8,9 @@ import java.io.FileReader;
 import java.io.IOException;
 public class ConnectionManager {
 	
+	
+	
+	
 	public static Connection getConnection()
 	{
 		Connection conn=null;
@@ -41,6 +44,35 @@ public class ConnectionManager {
 					ps.execute();
 					System.out.println("Created");
 				}
+				conn=DriverManager.getConnection(url+"CaseStudy12Jun",dbUserName,dbPassword);
+				try {
+					ps=conn.prepareStatement("CREATE TABLE BANKEMPLOYEE(EMPLOYEEID INT(9) ZEROFILL not null AUTO_INCREMENT,USERNAME VARCHAR(20),PASSWORD VARCHAR(20),Createdon timestamp default current_timestamp,Updatedon timestamp default current_timestamp,primary key (employeeid));");
+					ps.execute();
+				}
+				catch(Exception e)
+				{System.out.println(e);}
+				try {
+					ps=conn.prepareStatement("CREATE TABLE CUSTOMER(SSNID INT(9) NOT NULL,CUSTOMERID INT(9) zerofill NOT NULL AUTO_INCREMENT,NAME VARCHAR(20) NOT NULL,ADDRESS VARCHAR(50) NOT NULL,AGE INT(3) not null,Createdon timestamp default current_timestamp,EMPLOYEEID INT(9) ZEROFILL NOT NULL ,Updatedon timestamp default current_timestamp on update current_timestamp , primary key(customerid),foreign key(EMPLOYEEID) references bankemployee(employeeid));");
+					ps.execute();
+				}
+				catch(Exception e)
+				{System.out.println(e);}
+				try {
+					ps=conn.prepareStatement("CREATE TABLE ACCOUNT(CUSTOMERID INT(9) ZEROFILL NOT NULL ,ACCOUNTID INT(9) ZEROFILL NOT NULL  AUTO_INCREMENT,ACCOUNTTYPE VARCHAR(1),BALANCE INT NOT NULL,Createdon timestamp default current_timestamp,Updatedon timestamp default current_timestamp on update current_timestamp,PRIMARY KEY(ACCOUNTID), foreign key(customerid) references customer(customerid),CHECK(ACCOUNTTYPE IN('S','C')));");
+					ps.execute();
+				}
+				catch(Exception e)
+				{
+					System.out.println(e);
+				}
+				try {
+					ps=conn.prepareStatement("CREATE TABLE TRANSACTIONS(TRANSACTIONID INT(9) ZEROFILL NOT NULL ,EMPLOYEEID INT(9) zerofill NOT NULL,CUSTOMERID INT(9) ZEROFILL NOT NULL,ACCOUNTTYPE VARCHAR(1) NOT NULL,AMOUNT INT NOT NULL,TRANSACTIONDATE TIMESTAMP default current_timestamp,SOURCEACCOUNTTYPE VARCHAR(1),TARGETACCOUNTTYPE VARCHAR(1),CHECK(ACCOUNTTYPE IN ('S','C')),PRIMARY KEY(TRANSACTIONID),foreign key(customerid) references customer(customerid),foreign key (employeeid) references bankemployee(employeeid));");
+					ps.execute();
+					ps=conn.prepareStatement("alter table transactions add foreign key (employeeid) references bankemployee(employeeid);");
+					ps.execute();
+				}
+				catch(Exception e)
+				{System.out.println(e);}
 				}
 		catch(ClassNotFoundException|SQLException e){
 			e.printStackTrace();
