@@ -7,10 +7,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 public class ConnectionManager {
-	public static void main(String[] args)
-	{
-		getConnection();
-	}
+	
+	
+	
+	
 	public static Connection getConnection()
 	{
 		Connection conn=null;
