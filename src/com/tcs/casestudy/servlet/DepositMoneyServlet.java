@@ -1,6 +1,7 @@
 package com.tcs.casestudy.servlet;
-
+import com.tcs.casestudy.userDAO.UserDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,8 +38,23 @@ public class DepositMoneyServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher rd=null;
-		rd
+		String customerId=request.getParameter("customerId");
+		String accountId=request.getParameter("accountId");
+		String accountType=request.getParameter("accountType");
+		String balance=request.getParameter("balance");
+		String depositAmount=request.getParameter("depositAmount");
+		System.out.println(customerId);
+		boolean check=UserDAO.depositAmount(customerId,accountId,accountType,balance,depositAmount);
+		if(check==true)
+		{  
+			PrintWriter out=response.getWriter();
+			out.println("<font color=green>Amount successfully deposited</font>");
+			out.println("<font color=green>"+customerId+"</font>");
+			out.println("<font color=green>"+depositAmount+"</font>");
+			out.println("<font color=green>"+balance+"</font>");
+			RequestDispatcher rd=getServletContext().getRequestDispatcher("/Home.jsp");
+			rd.include(request, response);
+		}
 	}
 
 }
