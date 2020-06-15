@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,6 +43,15 @@ public class HeaderServlet extends HttpServlet {
 		if(command.equals("CustomerManagement"))
 		{
 			rd=getServletContext().getRequestDispatcher("/UpdateCustomer.jsp");
+		}
+		if(command.equals("Logout"))
+		{
+			for(Cookie c:request.getCookies())
+			{
+				c.setMaxAge(0);
+				response.addCookie(c);
+				rd=getServletContext().getRequestDispatcher("/Login.jsp");
+			}
 		}
 		else {
 		rd=getServletContext().getRequestDispatcher("/Login.jsp");

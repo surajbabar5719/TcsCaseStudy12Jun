@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,14 +47,9 @@ public class DepositMoneyServlet extends HttpServlet {
 		System.out.println(customerId);
 		boolean check=UserDAO.depositAmount(customerId,accountId,accountType,balance,depositAmount);
 		if(check==true)
-		{  
-			PrintWriter out=response.getWriter();
-			out.println("<font color=green>Amount successfully deposited</font>");
-			out.println("<font color=green>"+customerId+"</font>");
-			out.println("<font color=green>"+depositAmount+"</font>");
-			out.println("<font color=green>"+balance+"</font>");
-			RequestDispatcher rd=getServletContext().getRequestDispatcher("/Home.jsp");
-			rd.include(request, response);
+		{	PrintWriter out=response.getWriter();
+			out.println("<p></p>");
+			
 		}
 	}
 
