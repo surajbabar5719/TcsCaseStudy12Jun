@@ -1,9 +1,10 @@
 package com.tcs.casestudy.servlet;
 
 import java.io.IOException;
-
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import com.tcs.casestudy.userDAO.UserDAO;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,8 +38,22 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher rd=getServletContext().getRequestDispatcher("/Home.jsp");
-		rd.include(request, response);
-	}
+		System.out.println("inside login servlet");
+		String username=request.getParameter("username");
+		String password=request.getParameter("password");
+		System.out.println(username);
+			if(UserDAO.bankEmployeeLogin(username,password,response))
+			{
+				System.out.println(username);
+			RequestDispatcher rd=getServletContext().getRequestDispatcher("/Home.jsp");
+			rd.include(request, response);
+			}
+			else {
+
+				RequestDispatcher rd=getServletContext().getRequestDispatcher("/Login.jsp");
+				rd.include(request, response);	
+			}
+		}
+		
 
 }
