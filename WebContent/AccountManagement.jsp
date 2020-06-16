@@ -9,15 +9,15 @@
 <head>
 <%@ include file="Header.jsp" %>
 <meta charset="ISO-8859-1">
-<title>Customer Management</title>
+<title>Account Management</title>
 </head>
 <link rel="stylesheet" href="style.css">
 <body><center>
 <div class="text_area">
 <form>
-<input type="submit" value="Create New Customer" formaction="CreateCustomer.jsp" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;" id="Create Account"><br>
-<br><strong><br>Customer Id<br></strong><br><input type="text" name="customerId" id="customerId"><br><br>
-<input value="Search Customer" type="submit" formaction="CustomerInformation.jsp" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;" ><br>
+<input type="submit" value="Create New Account" formaction="CreateAccount.jsp" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;" id="Create Account"><br>
+<br><strong><br>Account Id<br></strong><br><input type="text" name="accountId" id="accountId"><br><br>
+<input value="Search Account" type="submit" formaction="AccountInformation.jsp" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;" ><br>
 </form><br>
 <h2 style="color:red;">
 <%if(request.getAttribute("error")!=null){

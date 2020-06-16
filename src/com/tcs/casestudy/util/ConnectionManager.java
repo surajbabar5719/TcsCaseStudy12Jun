@@ -51,7 +51,9 @@ public class ConnectionManager {
 				catch(Exception e)
 				{System.out.println(e);}
 				try {
-					ps=conn.prepareStatement("CREATE TABLE CUSTOMER(SSNID INT(9) NOT NULL,CUSTOMERID INT(9) zerofill NOT NULL AUTO_INCREMENT,NAME VARCHAR(20) NOT NULL,ADDRESS VARCHAR(50) NOT NULL,AGE INT(3) not null,Createdon timestamp default current_timestamp,EMPLOYEEID INT(9) ZEROFILL NOT NULL ,Updatedon timestamp default current_timestamp on update current_timestamp , primary key(customerid),foreign key(EMPLOYEEID) references bankemployee(employeeid));");
+					ps=conn.prepareStatement("CREATE TABLE CUSTOMER(SSNID INT(9) NOT NULL,CUSTOMERID INT(9) zerofill NOT NULL AUTO_INCREMENT,NAME VARCHAR(20) NOT NULL,ADDRESS VARCHAR(50) NOT NULL,AGE INT(3) not null,Createdon timestamp default current_timestamp,EMPLOYEEID INT(9) ZEROFILL NOT NULL ,Updatedon timestamp default current_timestamp on update current_timestamp , access varchar(3) default 'Yes', primary key(customerid),foreign key(EMPLOYEEID) references bankemployee(employeeid));");
+					ps.execute();
+					ps=conn.prepareStatement("insert into customer(name,username,password,employeepost) values('Executive1','Customerexecutive','Customerexecutive@12','E'),('Cashier1','Cashier','Cashier@12','C')");
 					ps.execute();
 				}
 				catch(Exception e)

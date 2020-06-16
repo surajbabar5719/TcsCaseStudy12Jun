@@ -8,8 +8,7 @@
 <meta charset="ISO-8859-1">
 <title>Customer Information</title>
 </head>
-<%try{ 
-%>
+
 <%@ include file="Header.jsp" %>
 <link rel="stylesheet" href="style.css">
 <body><center>
@@ -18,10 +17,18 @@
 <%
 Connection conn=ConnectionManager.getConnection();
 Statement stmt = conn.createStatement();
-ResultSet rs;
-
+ResultSet rs; 
+PreparedStatement ps;
+ps=conn.prepareStatement("UPDATE Customer SET name='"+request.getParameter("newCustomerName")+"' ,address='"+request.getParameter("newAddress")+"' ,age='"+request.getParameter("newAge")+"' where customerId="+request.getParameter("customerId")+";");
+ps.execute();
 rs = stmt.executeQuery("select * from Customer where customerid='"+request.getParameter("customerId")+"';");
 rs.first();
+if(rs.getString("access").equalsIgnoreCase("off"))
+{
+	request.setAttribute("error","Customer with this id is deleted");
+	RequestDispatcher rd=getServletContext().getRequestDispatcher("/CustomerManagement.jsp");
+	rd.include(request, response);
+}
 out.print("<tr><td>SSN ID</td><td>"+rs.getString("SSNID")+"</td></tr>");
 out.print("<tr><td>Customer ID</td><td>"+rs.getString("customerid")+"</td></tr>");
 out.print("<tr><td>Name</td><td>"+rs.getString("Name")+"</td></tr>");
@@ -36,23 +43,11 @@ request.setAttribute("CustomerAge",cAge);
 request.setAttribute("CustomerAddress",cadd);
 out.print("<tr><td>Created EmployeeId</td><td>"+rs.getString("employeeid")+"</td></tr>");
 out.print("<tr><td>Created on</td><td>"+rs.getString("createdon")+"</td></tr>");
+String newAge=request.getParameter("newAge");
 out.print("<tr><td>Updated On</td><td>"+rs.getString("updatedOn")+"</td></tr>");
+System.out.println("UPDATE Customer SET name='"+request.getParameter("newCustomerName")+"' ,address='"+newAge+"' ,age='"+request.getAttribute("newAge")+"' where customerId="+request.getParameter("customerId")+";");
 %>	</table><br>
-<form>
-<input type=text id="customerId" name=customerId value="<%out.print(rs.getString("customerId"));%>" hidden="">
-<input value="Update Customer" type="submit" formaction="UpdateCustomer.jsp" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;" ><br>
-<br>
-<input value="Delete Customer" type="submit" formaction="DeteleCustomer.jsp" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;" ><br>
-</form>
 </div></center>
 </body>
 <%@ include file="Footer.jsp" %>
 </html>
-<%}
-catch(Exception e)
-{
-	request.setAttribute("error","Customer Id not found");
-	RequestDispatcher rd=getServletContext().getRequestDispatcher("/CustomerManagement.jsp");
-	rd.include(request, response);
-}
-%>
