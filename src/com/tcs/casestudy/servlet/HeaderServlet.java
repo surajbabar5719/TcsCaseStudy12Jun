@@ -42,9 +42,9 @@ public class HeaderServlet extends HttpServlet {
 		String command=request.getParameter("submit");
 		if(command.equals("CustomerManagement"))
 		{
-			rd=getServletContext().getRequestDispatcher("/UpdateCustomer.jsp");
+			rd=getServletContext().getRequestDispatcher("/CustomerManagement.jsp");
 		}
-		if(command.equals("Logout"))
+		else if(command.equals("Logout"))
 		{
 			for(Cookie c:request.getCookies())
 			{
