@@ -20,15 +20,5 @@
     <servlet-name>HeaderServlet</servlet-name>
     <url-pattern>/Header</url-pattern>
   </servlet-mapping>
-  <servlet>
-  <servlet-name>DeleteCustomer</servlet-name>
-  <servlet-class>com.tcs.casestudy.servlet.DeleteCustomerServlet</servlet-class>
- 
-  </servlet>
-  <servlet-mapping>
-  <servlet-name>DeleteCustomerServlet</servlet-name>
-  <url-pattern>/deleteCustomer</url-pattern>
-  </servlet-mapping>
-  
   
 </web-app>

@@ -8,9 +8,6 @@ import java.io.FileReader;
 import java.io.IOException;
 public class ConnectionManager {
 	
-	
-	
-	
 	public static Connection getConnection()
 	{
 		Connection conn=null;
@@ -46,7 +43,9 @@ public class ConnectionManager {
 				}
 				conn=DriverManager.getConnection(url+"CaseStudy12Jun",dbUserName,dbPassword);
 				try {
-					ps=conn.prepareStatement("CREATE TABLE BANKEMPLOYEE(EMPLOYEEID INT(9) ZEROFILL not null AUTO_INCREMENT,USERNAME VARCHAR(20),PASSWORD VARCHAR(20),Createdon timestamp default current_timestamp,Updatedon timestamp default current_timestamp,primary key (employeeid));");
+					ps=conn.prepareStatement("CREATE TABLE BANKEMPLOYEE(Name varchar(20) not null,EMPLOYEEID INT(9) ZEROFILL not null AUTO_INCREMENT,USERNAME VARCHAR(20),PASSWORD VARCHAR(20),Createdon timestamp default current_timestamp,Updatedon timestamp default current_timestamp,employeepost varchar(1) not null,primary key (employeeid), check(employeepost in ('E','C')));");
+					ps.execute();
+					ps=conn.prepareStatement("insert into bankemployee(name,username,password,employeepost) values('Executive1','Customerexecutive','Customerexecutive@12','E'),('Cashier1','Cashier','Cashier@12','C')");
 					ps.execute();
 				}
 				catch(Exception e)
@@ -75,7 +74,7 @@ public class ConnectionManager {
 				{System.out.println(e);}
 				}
 		catch(ClassNotFoundException|SQLException e){
-			e.printStackTrace();
+			System.out.println(e);
 		}
 	return conn;
 }
