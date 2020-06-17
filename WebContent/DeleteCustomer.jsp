@@ -25,6 +25,8 @@ RequestDispatcher rd=getServletContext().getRequestDispatcher("/CustomerManageme
 rd.include(request, response);
 %>
 </div></center>
+
+
 </body>
 <%@ include file="Footer.jsp" %>
 </html>
