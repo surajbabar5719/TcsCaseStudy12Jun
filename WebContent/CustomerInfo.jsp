@@ -3,16 +3,13 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="com.tcs.casestudy.util.ConnectionManager"%>
 <!DOCTYPE html>
-<html>
+
 <head>
 <meta charset="ISO-8859-1">
 <title>Customer Information</title>
 </head>
-<%try{ 
-%>
-<%@ include file="Header.jsp" %>
 <link rel="stylesheet" href="style.css">
-<body><center>
+<center>
 <div class="text_area">
 <table>
 <%
@@ -38,21 +35,5 @@ out.print("<tr><td>Created EmployeeId</td><td>"+rs.getString("employeeid")+"</td
 out.print("<tr><td>Created on</td><td>"+rs.getString("createdon")+"</td></tr>");
 out.print("<tr><td>Updated On</td><td>"+rs.getString("updatedOn")+"</td></tr>");
 %>	</table><br>
-<form>
-<input type=text id="customerId" name=customerId value="<%out.print(rs.getString("customerId"));%>" hidden="">
-<input value="Update Customer" type="submit" formaction="UpdateCustomer.jsp" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;" ><br>
-<br>
-<input value="Delete Customer" type="submit" formaction="DeteleCustomer.jsp" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;" ><br>
-</form>
 </div></center>
-</body>
-<%@ include file="Footer.jsp" %>
-</html>
-<%}
-catch(Exception e)
-{
-	request.setAttribute("error","Customer Id not found");
-	RequestDispatcher rd=getServletContext().getRequestDispatcher("/CustomerManagement.jsp");
-	rd.include(request, response);
-}
-%>
+

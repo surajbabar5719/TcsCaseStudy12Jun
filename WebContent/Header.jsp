@@ -12,12 +12,12 @@
 	<div class="textarea">
 	<form action="Header" method=post >
 		<div class="Container">
-		<input type="submit" name="submit" value="Home" id="Home">
-		<input type="submit" name="submit" value="CustomerManagement" id="CustomerManagement">
-		<input type="submit" name="submit" value="AccountManagement" id="AccountManagement">
-		<input type="submit" name="submit" value="StatusDetails" id="StatusDetails">
-		<input type="submit"  name="submit" value="AccountOperations" id="AccountOperations">
-		<input type="submit"  name="submit" value="Logout" id="Logout">
+		<input type="submit" name="submit" value="Home" id="Home" formaction="Home.jsp">
+		<input type="submit" name="submit" value="CustomerManagement" id="CustomerManagement" formaction="CustomerManagement.jsp">
+		<input type="submit" name="submit" value="AccountManagement" id="AccountManagement" formaction="AccountManagement.jsp">
+		<input type="submit" name="submit" value="StatusDetails" id="StatusDetails" formaction="StatusDetails.jsp">
+		<input type="submit"  name="submit" value="AccountOperations" id="AccountOperations" formaction="AccountOperations.jsp">
+		<input type="submit"  name="submit" value="Logout" id="Logout" formaction="Login.jsp">
 	</div></form>
 </div>
 </div>

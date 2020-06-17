@@ -17,13 +17,11 @@
 <%
 Connection conn=ConnectionManager.getConnection();
 Statement stmt = conn.createStatement();
-ResultSet rs,rs1; 
+ResultSet rs; 
 PreparedStatement ps;
-String param=request.getParameter("depositAmount");
-System.out.print(param+"select * from Customer where customerid=(select customerId from account where accountId='"+request.getParameter("accountId")+"';"+"UPDATE Account SET balance="+request.getParameter("balance")+"+"+request.getParameter("depositAmount")+" where accountId='"+request.getParameter("accountId")+"';");
-ps=conn.prepareStatement("UPDATE Account SET balance="+request.getParameter("balance")+"+"+request.getParameter("depositAmount")+" where accountId='"+request.getParameter("accountId")+"';");
+ps=conn.prepareStatement("UPDATE Customer SET name='"+request.getParameter("newCustomerName")+"' ,address='"+request.getParameter("newAddress")+"' ,age='"+request.getParameter("newAge")+"' where customerId="+request.getParameter("customerId")+";");
 ps.execute();
-rs = stmt.executeQuery("select * from Customer where customerid=(select customerId from account where accountId='"+request.getParameter("accountId")+"');");
+rs = stmt.executeQuery("select * from Customer where customerid='"+request.getParameter("customerId")+"';");
 rs.first();
 if(rs.getString("access").equalsIgnoreCase("off"))
 {
@@ -45,12 +43,9 @@ request.setAttribute("CustomerAge",cAge);
 request.setAttribute("CustomerAddress",cadd);
 out.print("<tr><td>Created EmployeeId</td><td>"+rs.getString("employeeid")+"</td></tr>");
 out.print("<tr><td>Created on</td><td>"+rs.getString("createdon")+"</td></tr>");
+String newAge=request.getParameter("newAge");
 out.print("<tr><td>Updated On</td><td>"+rs.getString("updatedOn")+"</td></tr>");
-rs1 = stmt.executeQuery("select * from Account where accountid='"+request.getParameter("accountId")+"';");
-rs1.first();
-out.print("<tr><td>Account Id</td><td>"+rs1.getString("accountid")+"</td></tr>");
-out.print("<tr><td>Account Type</td><td>"+rs1.getString("accounttype")+"</td></tr>");
-out.print("<tr><td>Balance</td><td>"+rs1.getString("balance")+"</td></tr>");
+System.out.println("UPDATE Customer SET name='"+request.getParameter("newCustomerName")+"' ,address='"+newAge+"' ,age='"+request.getAttribute("newAge")+"' where customerId="+request.getParameter("customerId")+";");
 %>	</table><br>
 </div></center>
 </body>
