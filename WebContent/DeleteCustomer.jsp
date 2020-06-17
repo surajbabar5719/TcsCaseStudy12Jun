@@ -15,7 +15,9 @@
 	<%
 Connection conn=ConnectionManager.getConnection();
 PreparedStatement ps;
-ps=conn.prepareStatement("delete from Customer where customerid="+request.getParameter("customerId")+";");
+ps=conn.prepareStatement("UPDATE Customer SET access='No' where customerId='"+request.getParameter("customerId")+"';");
+ps.execute();
+ps=conn.prepareStatement("UPDATE Account SET access='No' where customerId='"+request.getParameter("customerId")+"';");
 ps.execute();
 out.print("Customer Deleted from database");
 request.setAttribute("error","Customer is deleted Successfully");

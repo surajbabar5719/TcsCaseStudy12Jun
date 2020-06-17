@@ -15,8 +15,8 @@
 <body><center>
 <div class="text_area">
 <form>
-<input value="Account details" type="submit" formaction="Accountdetails.jsp" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;" ><br>
-<input value="Customer details" type="submit" formaction="CustomerDetails.jsp" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;" ><br>
+<input value="Account details" type="submit" formaction="AccountDetails.jsp" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;" ><br><br>
+<input value="Customer details" type="submit" formaction="CustomerDetails.jsp" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;" >
 </form>
 </div></center>
 </body>

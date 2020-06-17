@@ -6,21 +6,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Delete Account</title>
+<title>Customer Information</title>
 </head>
+
 <%@ include file="Header.jsp" %>
 <link rel="stylesheet" href="style.css">
 <body><center>
 <div class="text_area">
-	<%
-Connection conn=ConnectionManager.getConnection();
-PreparedStatement ps;
-ps=conn.prepareStatement("UPDATE Account SET access='No' where accountId='"+request.getParameter("accountId")+"';");
-ps.execute();
-request.setAttribute("error","Account deleted Successfully");
-RequestDispatcher rd=getServletContext().getRequestDispatcher("/AccountManagement.jsp");
-rd.include(request, response);
-%>
+<form>
+Transfer To<br>
+<input type=text name="accountId1" value=<%out.print(request.getParameter("accountId")); %> hidden="">
+<input type=text name="accountId2" >
+<input type=submit formaction="Transfer.jsp" value="Details">
+</form>
 </div></center>
 </body>
 <%@ include file="Footer.jsp" %>

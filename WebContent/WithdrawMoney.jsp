@@ -6,9 +6,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Account Information</title>
+<title>Withdraw</title>
 </head>
-
+<script type="text/javascript">
+function validate()
+{
+	var balance=document.forms["form1"]["balance"].value;
+	var amt=document.forms["form1"]["withdrawAmount"].value;
+	if(balace<amt)
+		{
+		alert("balance not enough");
+		return false;
+		}
+	}
+</script>
 <%try{ 
 %>
 <%@ include file="Header.jsp" %>
@@ -25,6 +36,7 @@ rs1.first();
 out.print("<tr><td>Account Id</td><td>"+rs1.getString("accountid")+"</td></tr>");
 out.print("<tr><td>Account Type</td><td>"+rs1.getString("accounttype")+"</td></tr>");
 out.print("<tr><td>Balance</td><td>"+rs1.getString("balance")+"</td></tr>");
+int balance=rs1.getInt("balance");
 rs = stmt.executeQuery("select * from Customer where customerid='"+rs1.getString("customerId")+"'and access='Yes';");
 rs.first();
 out.print("<tr><td>SSN ID</td><td>"+rs.getString("SSNID")+"</td></tr>");
@@ -44,10 +56,18 @@ out.print("<tr><td>Created on</td><td>"+rs.getString("createdon")+"</td></tr>");
 out.print("<tr><td>Updated On</td><td>"+rs.getString("updatedOn")+"</td></tr>");
 
 %>	</table><br>
-<form>
-<input type=text id="accountId" name=accountId value="<%out.print(request.getParameter("accountId"));%>" hidden="">
-<input value="Delete Account" type="submit" formaction="DeleteAccount.jsp" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;" ><br>
+<form name="form1" action="WithdrawMoneySuccessfull.jsp" onsubmit="return validate()"><br>
+<input type=text id="accountId" name="accountId" value="<%out.print(request.getParameter("accountId"));%>" hidden="">
+<input type=text id="balance" name="balance" value="<% out.print(balance);%>" hidden="">
+<br><br><br><label>Enter Amount</label>:<input type=text id="withdrawAmount" name=withdrawAmount required>
+<br><br><input value="Withdraw Amount" type="submit" onsubmit="return validate()" style="background-color:black; color:rgb(232,232,232); padding:14px 30px;" ><br>
 </form>
+<%
+if(request.getAttribute("error")!=null){
+out.print(request.getAttribute("error"));
+request.setAttribute("error",null);
+}
+%>
 </div></center>
 </body>
 <%@ include file="Footer.jsp" %>
@@ -56,8 +76,8 @@ out.print("<tr><td>Updated On</td><td>"+rs.getString("updatedOn")+"</td></tr>");
 <%}
 catch(Exception e)
 {
-	request.setAttribute("error","Customer Id not found");
-	RequestDispatcher rd=getServletContext().getRequestDispatcher("/AccountManagement.jsp");
+	request.setAttribute("error","Account Id not found");
+	RequestDispatcher rd=getServletContext().getRequestDispatcher("/AccountOperations.jsp");
 	rd.include(request, response);
 }
 %>

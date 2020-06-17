@@ -15,13 +15,18 @@
 <div class="text_area">
 <table>
 <%
+if(Integer.parseInt(request.getParameter("balance"))<Integer.parseInt(request.getParameter("withdrawAmount")))
+{
+	request.setAttribute("error","Balance insufficient");
+	RequestDispatcher rd=getServletContext().getRequestDispatcher("/WithdrawMoney.jsp");
+	rd.include(request, response);
+}else{
 Connection conn=ConnectionManager.getConnection();
 Statement stmt = conn.createStatement();
 ResultSet rs,rs1; 
 PreparedStatement ps;
-String param=request.getParameter("depositAmount");
-System.out.print(param+"select * from Customer where customerid=(select customerId from account where accountId='"+request.getParameter("accountId")+"';"+"UPDATE Account SET balance="+request.getParameter("balance")+"+"+request.getParameter("depositAmount")+" where accountId='"+request.getParameter("accountId")+"';");
-ps=conn.prepareStatement("UPDATE Account SET balance="+request.getParameter("balance")+"+"+request.getParameter("depositAmount")+" where accountId='"+request.getParameter("accountId")+"';");
+System.out.print("UPDATE Account SET balance="+request.getParameter("balance")+"-"+request.getParameter("withdrawAmount")+" where accountId='"+request.getParameter("accountId")+"';");
+ps=conn.prepareStatement("UPDATE Account SET balance="+request.getParameter("balance")+"-"+request.getParameter("withdrawAmount")+" where accountId='"+request.getParameter("accountId")+"';");
 ps.execute();
 rs = stmt.executeQuery("select * from Customer where customerid=(select customerId from account where accountId='"+request.getParameter("accountId")+"');");
 rs.first();
@@ -51,7 +56,8 @@ rs1.first();
 out.print("<tr><td>Account Id</td><td>"+rs1.getString("accountid")+"</td></tr>");
 out.print("<tr><td>Account Type</td><td>"+rs1.getString("accounttype")+"</td></tr>");
 out.print("<tr><td>Balance</td><td>"+rs1.getString("balance")+"</td></tr>");
-%>	</table><br>
+}%>	</table><br>
+Successfull
 </div></center>
 </body>
 <%@ include file="Footer.jsp" %>

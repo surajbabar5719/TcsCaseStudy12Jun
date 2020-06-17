@@ -59,7 +59,7 @@ public class ConnectionManager {
 				catch(Exception e)
 				{System.out.println(e);}
 				try {
-					ps=conn.prepareStatement("CREATE TABLE ACCOUNT(CUSTOMERID INT(9) ZEROFILL NOT NULL ,ACCOUNTID INT(9) ZEROFILL NOT NULL  AUTO_INCREMENT,ACCOUNTTYPE VARCHAR(1),BALANCE INT NOT NULL,Createdon timestamp default current_timestamp,Updatedon timestamp default current_timestamp on update current_timestamp,PRIMARY KEY(ACCOUNTID), foreign key(customerid) references customer(customerid),CHECK(ACCOUNTTYPE IN('S','C')));");
+					ps=conn.prepareStatement("CREATE TABLE ACCOUNT(CUSTOMERID INT(9) ZEROFILL NOT NULL ,ACCOUNTID INT(9) ZEROFILL NOT NULL  AUTO_INCREMENT,ACCOUNTTYPE VARCHAR(1),BALANCE INT NOT NULL,Createdon timestamp default current_timestamp,Updatedon timestamp default current_timestamp on update current_timestamp, access varchar(3) default 'Yes',PRIMARY KEY(ACCOUNTID), foreign key(customerid) references customer(customerid),CHECK(ACCOUNTTYPE IN('S','C'),check(balance > 0)));");
 					ps.execute();
 				}
 				catch(Exception e)
@@ -67,9 +67,9 @@ public class ConnectionManager {
 					System.out.println(e);
 				}
 				try {
-					ps=conn.prepareStatement("CREATE TABLE TRANSACTIONS(TRANSACTIONID INT(9) ZEROFILL NOT NULL ,EMPLOYEEID INT(9) zerofill NOT NULL,CUSTOMERID INT(9) ZEROFILL NOT NULL,ACCOUNTTYPE VARCHAR(1) NOT NULL,AMOUNT INT NOT NULL,TRANSACTIONDATE TIMESTAMP default current_timestamp,SOURCEACCOUNTTYPE VARCHAR(1),TARGETACCOUNTTYPE VARCHAR(1),CHECK(ACCOUNTTYPE IN ('S','C')),PRIMARY KEY(TRANSACTIONID),foreign key(customerid) references customer(customerid),foreign key (employeeid) references bankemployee(employeeid));");
+					ps=conn.prepareStatement("CREATE TABLE TRANSACTION(TRANSACTIONID INT(9) ZEROFILL NOT NULL ,Accountid INT(9) ZEROFILL NOT NULL,AMOUNT INT NOT NULL,TRANSACTIONDATE TIMESTAMP default current_timestamp,SOURCEACCOUNTId INT(9) ZEROFILL,TARGETACCOUNTId INT(9) ZEROFILL,CHECK(ACCOUNTTYPE IN ('S','C')),PRIMARY KEY(TRANSACTIONID),foreign key(customerid) references customer(customerid),foreign key (employeeid) references bankemployee(employeeid));");
 					ps.execute();
-					ps=conn.prepareStatement("alter table transactions add foreign key (employeeid) references bankemployee(employeeid);");
+					ps=conn.prepareStatement("alter table transaction add foreign key (employeeid) references bankemployee(employeeid);");
 					ps.execute();
 				}
 				catch(Exception e)
